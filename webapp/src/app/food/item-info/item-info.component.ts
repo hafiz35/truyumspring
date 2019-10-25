@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Food } from '../food.model';
+import { AuthenticateService } from 'src/app/site/authenticate.service';
 
 @Component({
   selector: 'app-food-item-info',
@@ -8,9 +9,13 @@ import { Food } from '../food.model';
 })
 export class ItemInfoComponent implements OnInit {
   @Input() food:Food[];
-  constructor() { }
+  constructor(private authService:AuthenticateService) { }
 
   ngOnInit() {
+  }
+  
+  isAdmin(){
+    return this.authService.loggedIn && this.authService.isAdminUser();
   }
 
 }

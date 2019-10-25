@@ -5,13 +5,16 @@ import { SignupComponent } from './site/signup/signup.component';
 import { MenuComponent } from './food/menu/menu.component';
 import { CartComponent } from './shopping/cart/cart.component';
 import { ItemEditComponent } from './food/item-edit/item-edit.component';
+import { NotfoundComponent } from './site/notfound/notfound.component';
 
 const routes: Routes = [
+  {path:'',redirectTo:'menu',pathMatch:'full'},
   {path:'login',component:LoginComponent},
   {path:'signup',component:SignupComponent},
   {path:'menu',component:MenuComponent},
   {path:'editmenu',component:ItemEditComponent},
-  {path:'cart',component:CartComponent}
+  {path:'cart',component:CartComponent},
+  {path:'**',component:NotfoundComponent}
 ];
 
 @NgModule({

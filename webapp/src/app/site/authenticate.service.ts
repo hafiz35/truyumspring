@@ -22,4 +22,11 @@ export class AuthenticateService {
       }
     });
   }
+  logOut(){
+    this.redirectUrl='/';
+    this.loggedIn=false;
+  }
+  isAdminUser(){
+    return this.isAdmin;
+  }
 }

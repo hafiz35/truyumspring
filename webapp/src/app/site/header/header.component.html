@@ -10,18 +10,18 @@
       <li class="nav-item">
         <a routerLink="/menu" class="nav-link">Products</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!isAuthenticated()">
         <a routerLink="/cart" class="nav-link">Cart</a>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!isAuthenticated()">
         <a routerLink="/login" class="nav-link">Login</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!isAuthenticated()">
         <a routerLink="/signup" class="nav-link">Sign Up</a>
       </li>
-      <li class="nav-item"><a href="#" class="nav-link"><i class="material-icons">
+      <li class="nav-item" *ngIf="isAuthenticated()"><a routerLink="/menu" class="nav-link"><i class="material-icons">
             person
-          </i>Admin</a></li>
-      <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
+          </i>{{getUser().lastName}},{{getUser().firstName}}</a></li>
+      <li class="nav-item" *ngIf="isAuthenticated()"><a href="#" class="nav-link" (click)="onSignOut()">Logout</a></li>
     </ul>
   </div>
 </nav>

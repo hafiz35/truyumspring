@@ -14,7 +14,8 @@ import { ItemInfoComponent } from './food/item-info/item-info.component';
 import { MenuComponent } from './food/menu/menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './shopping/cart/cart.component';
-import { ItemEditComponent } from './food/item-edit/item-edit.component'
+import { ItemEditComponent } from './food/item-edit/item-edit.component';
+import { NotfoundComponent } from './site/notfound/notfound.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { ItemEditComponent } from './food/item-edit/item-edit.component'
     ItemInfoComponent,
     MenuComponent,
     CartComponent,
-    ItemEditComponent
+    ItemEditComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,

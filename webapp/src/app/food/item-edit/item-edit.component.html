@@ -57,7 +57,7 @@
             <input type="checkbox" id="freedelivery" name="freedelivery" value="yes"> Free delivery
           </div>
           <div class="form group col-lg-12 mt-4">
-            <a href="edit-menu-item-success.html"><input type="submit" class="btn bg-orangered text-white" id="save"
+            <a href="edit-menu-item-success.html"><input type="submit" [disabled]="editmenuForm.invalid" class="btn bg-orangered text-white" id="save"
                 value="Save"></a>
           </div>
         </div>

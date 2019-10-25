@@ -7,19 +7,25 @@
           <div class="alert alert-info" role="alert" *ngIf="authSource==='cart'">
             PLease Login before you proceed
           </div>
+          <div class="alert alert-info" *ngIf="!isLoginValid">
+            Invalid Username/Password
+          </div>
           <div class="form-group mt-4">
             <label for="username">Username</label>
-            <input type="text" class="form-control" ngModel #uname="ngModel" id="username" name="uname" placeholder="Enter Username" required>
+            <input type="text" class="form-control" ngModel #uname="ngModel" id="username" name="uname"
+              placeholder="Enter Username" required>
             <span class="validation-error" *ngIf="uname.invalid && uname.touched">Username required</span>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" ngModel #pass="ngModel" id="password" name="pass" placeholder="Enter Password" required>
+            <input type="password" class="form-control" ngModel #pass="ngModel" id="password" name="pass"
+              placeholder="Enter Password" required>
             <span class="validation-error" *ngIf="pass.invalid && pass.touched">Password required</span>
           </div>
           <div class="row">
             <div class="col-6">
-              <input type="submit" class="btn bg-orangered text-white" [disabled]="loginForm.invalid" name="login" value="Login">
+              <input type="submit" class="btn bg-orangered text-white" [disabled]="loginForm.invalid" name="login"
+                value="Login">
             </div>
             <div class="col-6 d-felx justify-cointent-end">
               <label name="signup">New here?<a routerLink="/signup">Signup</a></label>
