@@ -1,0 +1,10 @@
+.bg-orangered {
+    background-color: orangered;
+}
+.validation-error{
+    color: red;
+}
+.page-title{
+    font-size: 30px;
+    font-weight: bold;
+}

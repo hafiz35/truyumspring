@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="card-body col-lg-12">
+        <div class="alert alert-success" *ngIf="formSubmitted">
+            Successfull Edited!!
+          </div>
+          <div *ngIf="formSubmitted">
+            <a routerLink="/menu" class="btn btn-primary">Menu Items</a>
+          </div>
+      <form [formGroup]="editmenuForm" (submit)="onEdited()" *ngIf="!formSubmitted">
+        <h2>
+          Edit Product
+        </h2>
+        <div class="row">
+          <div class="form group col-lg-12 mt-3">
+            <label for="name">Name</label>
+            <input type="text" id="name" class="form-control" formControlName="mname">
+            <span class="validation-error"
+              *ngIf="editmenuForm.get('mname').hasError('required') && editmenuForm.get('mname').touched">Username
+              required</span> 
+          </div>
+          <div class="form group col-xs-6 col-lg-3 mt-3">
+            <label for="price1">Price</label>
+            <input type="text" id="price1" class="form-control" formControlName="price">
+            <span class="validation-error"
+            *ngIf="editmenuForm.get('price').hasError('required') && editmenuForm.get('price').touched">Price
+            required</span>
+            <span class="validation-error"
+            *ngIf="editmenuForm.get('price').hasError('pattern')">Price contains only numeric values</span>
+          </div>
+          <div class="form group col-xs-6 col-lg-3 mt-3">
+            <label for="date-picker-example">Date of Expiry</label>
+            <input type="date" date-format="dd/mm/yyyy" class="form-control" id="datepicker">
+          </div>
+          <div class="form group col-xs-6 col-lg-3 mt-3">
+            <label for="price">Category</label>
+            <select class="form-control">
+              <option id="Main Course">Main Course</option>
+              <option id="Starters">Starters</option>
+              <option id="Dessert">Dessert</option>
+            </select>
+          </div>
+          <div class="form group col-xs-6 col-lg-3 mt-3">
+            <label>Active</label><BR>
+            <div class="form-check-inline">
+              <label class="form-check-label" for="yes">
+                <input type="radio" class="form-check-input" name="active" value="yes" id="yes"> Yes
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <label class="form-check-label" for="no">
+                <input type="radio" class="form-check-input" name="active" value="no" id="no"> No
+              </label>
+            </div>
+          </div>
+          <div class="form group col-lg-12 mt-4">
+            <input type="checkbox" id="freedelivery" name="freedelivery" value="yes"> Free delivery
+          </div>
+          <div class="form group col-lg-12 mt-4">
+            <a href="edit-menu-item-success.html"><input type="submit" class="btn bg-orangered text-white" id="save"
+                value="Save"></a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

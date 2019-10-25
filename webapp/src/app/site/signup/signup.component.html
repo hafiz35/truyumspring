@@ -1,0 +1,84 @@
+<div class="row justify-content-center mt-4">
+  <div class="col-12 col-md-4 col-lg-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="page-title">Sign Up</div>
+        <div class="alert alert-success" *ngIf="formSubmitted">
+          Successfull Signed Up!!
+        </div>
+        <div *ngIf="formSubmitted">
+          <a routerLink="/login" class="btn btn-primary">Login</a>
+        </div>
+        <form [formGroup]="signupForm" (submit)="onSignUp()" *ngIf="!formSubmitted">
+          <div class="row">
+            <div class="form-group mt-4 col-6 mr-1">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" id="username" formControlName="uname"
+                placeholder="Enter Username">
+              <span class="validation-error"
+                *ngIf="signupForm.get('uname').hasError('required') && signupForm.get('uname').touched">Username
+                required</span>
+              <div class="alert alert-warning" *ngIf="signupForm.pending">
+                <div class="spinner-border">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+              <span class="validation-error" *ngIf="signupForm.get('uname').hasError('maxlength')">Username exceeded max
+                characters</span>
+              <span class="validation-error" *ngIf="signupForm.get('uname').hasError('userExist')">Username already
+                exists</span>
+            </div>
+            <div class="form-group mt-2 col-6">
+              <label for="firstname">FirstName</label>
+              <input type="text" class="form-control" id="firstname" formControlName="fname"
+                placeholder="Enter FirstName">
+              <span class="validation-error"
+                *ngIf="signupForm.get('fname').hasError('required') && signupForm.get('fname').touched">Firstname
+                required</span>
+              <span class="validation-error" *ngIf="signupForm.get('fname').hasError('pattern')">Enter Characters
+                only</span>
+              <span class="validation-error" *ngIf="signupForm.get('fname').hasError('maxlength')">Firstname exceeded
+                max
+                characters</span>
+            </div>
+            <div class="form-group mt-2 col-6">
+              <label for="lastname">LastName</label>
+              <input type="text" class="form-control" id="lastname" formControlName="lname"
+                placeholder="Enter LastName">
+              <span class="validation-error"
+                *ngIf="signupForm.get('lname').hasError('required') && signupForm.get('lname').touched">Lastname
+                required</span>
+              <span class="validation-error" *ngIf="signupForm.get('lname').hasError('pattern')">Enter Characters
+                only</span>
+              <span class="validation-error" *ngIf="signupForm.get('lname').hasError('maxlength')">Lastname exceeded max
+                characters</span>
+            </div>
+            <div class="form-group mt-3 col-6">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" formControlName="pswd"
+                placeholder="Enter Password">
+              <span class="validation-error"
+                *ngIf="(signupForm.get('pswd').hasError('required') && signupForm.get('pswd').touched) || (!signupForm.get('pswd').touched && signupForm.get('cpswd').touched)">Password
+                required</span>
+            </div>
+            <div class="form-group mt-3 col-6">
+              <label for="cpassword">Confirm Password</label>
+              <input type="password" class="form-control" id="cpassword" formControlName="cpswd"
+                placeholder="Confirm Password">
+              <span class="validation-error"
+                *ngIf="signupForm.get('cpswd').hasError('required') && signupForm.get('cpswd').touched && signupForm.get('pswd').touched">Confirm Password
+                required</span>
+              <span class="validation-error"
+                *ngIf="signupForm.get('cpswd').touched && signupForm.get('cpswd').hasError('nomatch')">Confirm Password
+                not matched with password</span>
+            </div>
+            <div class="form-group col-3">
+              <input type="submit" class="btn bg-orangered text-white form-control" [disabled]="signupForm.invalid"
+                name="signup" value="Sign Up">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

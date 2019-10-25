@@ -1,0 +1,14 @@
+footer {
+	position: fixed;
+    bottom: 0;
+    padding-left: 10px;
+    margin-left: 0;
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    color: white;
+	background-color: darkslategray;
+}
+.bg-orangered {
+    background-color: orangered;
+}

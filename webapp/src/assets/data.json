@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "name": "Sandwich",
+        "price": 99,
+        "category": "Main Course",
+        "imgsrc":"https://images.unsplash.com/photo-1528735602780-2552fd46c7af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+        "active":true,
+        "dateOfLaunch":"2017/03/15",
+        "freeDelivery":true},
+    {
+        "id": 2,
+        "name": "Burger", 
+        "price": 129, 
+        "category": "Main Course", 
+        "imgsrc":"https://images.unsplash.com/photo-1512152272829-e3139592d56f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+        "active": true,
+        "dateOfLaunch":"2017/12/23",
+        "freeDelivery": false
+    },
+    {
+        "id": 3,
+        "name": "Pizza",
+        "price": 149,
+        "category": "Main Course",
+        "imgsrc": "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+        "active": true,
+        "dateOfLaunch":"2017/08/21",
+        "freeDelivery": false
+    },
+    {
+        "id": 4,
+        "name": "French Fries",
+        "price": 57,
+        "category": "Starter",
+        "imgsrc": "https://images.unsplash.com/photo-1526230427044-d092040d48dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+        "active": false,
+        "dateOfLaunch":"2017/07/02",
+        "freeDelivery": true
+    },
+    {
+        "id": 5,
+        "name": "Choclate Brownie",
+        "price": 32,
+        "category": "Dessert",
+        "imgsrc": "https://images.unsplash.com/photo-1564355808539-22fda35bed7e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+        "active": true,
+        "dateOfLaunch":"2022/11/02",
+        "freeDelivery": true
+    }
+]
