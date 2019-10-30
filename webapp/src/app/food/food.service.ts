@@ -16,9 +16,9 @@ export class FoodService {
   }
   
   getfood(id:number):Observable<any>{
-   return Observable.create((observer:Observer<any>)=>{
+   return Observable.create((observer:Observer<Food>)=>{
      this.getfoods().subscribe((foods:Food[])=>{
-       const fd=foods.find(food=>food.id===id);
+       const fd=foods.find(food=>food.id==id);
        observer.next(fd);
      });
    });

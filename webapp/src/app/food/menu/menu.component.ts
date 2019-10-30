@@ -34,9 +34,6 @@ export class MenuComponent implements OnInit {
 
   addFoodToCart(foodId:number){
     this.cartService.addToCart(foodId,1);
-    /*if(!this.authService.loggedIn){
-      this.router.navigate(['/cart']);
-    }*/
   }
 
 

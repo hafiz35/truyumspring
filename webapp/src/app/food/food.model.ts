@@ -4,7 +4,7 @@ export interface Food{
     price:number;
     imgsrc:string;
     active:boolean;
-    dateOfLaunch:Date;
+    dateOfExpiry:Date;
     category:string;
     freeDelivery:boolean;
 }

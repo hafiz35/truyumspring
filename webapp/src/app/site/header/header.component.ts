@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   }
 
   isAuthenticated(){
+    this.authService.authSource="customer";
     return this.authService.loggedIn;
   }
   isAdmin(){
