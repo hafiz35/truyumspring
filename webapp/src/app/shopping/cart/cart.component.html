@@ -2,31 +2,41 @@
   <div class="display-4">
     Cart
   </div>
-  <ul class="list-group">
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-lg-6">
-          <label class="item">Sandwich</label>
+  <div class="alert alert-secondary" *ngIf="cart.items===null || cart.items.length===0; else cartItems">
+    No items in cart. Use 'Add To Cart' to add items
+  </div>
+  <ng-template #cartItems>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of cart.items">
+        <div class="row">
+          <div class="col-lg-6">
+            <label class="item">{{item.food.name}}</label>
+          </div>
+          <div class="col-lg-6">
+            <label class="float-right item">{{item.food.price}}</label>
+          </div>
         </div>
-        <div class="col-lg-6">
-          <label class="float-right item">99.00</label>
+        <label class="float-right">
+          <i class="material-icons" (click)="onRemove(item.itemId)">
+            delete_forever
+          </i>
+        </label>
+      </li>
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-lg-6">
+            <label class="font-size-25 bold">Total</label>
+          </div>
+          <div class="col-lg-6">
+            <label class="float-right font-size-25 bold">{{cart.total | currency:'INR'}}</label>
+          </div>
         </div>
-      </div>
-      <label class="float-right">
-        <i class="material-icons">
-          delete_forever
-        </i>
-      </label>
-    </li>
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-lg-6">
-          <label class="font-size-25 bold">Total</label>
-        </div>
-        <div class="col-lg-6">
-          <label class="float-right font-size-25 bold"> Rs. 99.00</label>
-        </div>
-      </div>
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </ng-template>
+</div>
+<div class="row justify-content-center">
+  <div class="col-12 col-md-12 col-lg-6">
+    <a href="#" class="btn btn-primary" routerLink="/menu">Continue with shopping</a>
+  </div>
 </div>

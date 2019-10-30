@@ -5,7 +5,7 @@
         <div class="page-title">Login</div>
         <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
           <div class="alert alert-info" role="alert" *ngIf="authSource==='cart'">
-            PLease Login before you proceed
+            Please Login before you proceed
           </div>
           <div class="alert alert-info" *ngIf="!isLoginValid">
             Invalid Username/Password

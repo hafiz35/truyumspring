@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="col-4 d-flex justify-content-end" *ngIf="isAdmin()">
-                        <a routerLink="/editmenu" class="btn bg-orangered  text-white ">
+                        <a routerLink="/editmenu" class="btn bg-orangered  text-white" (click)="onEdit(food.id)">
                             <i class="material-icons">
                                 edit
                             </i>
@@ -38,13 +38,23 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-12 mt-2" *ngIf="foodAdded">
+                        <div class="alert alert-success alert-dismissible fade show alert-msg">
+                            Item added Successfully
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col d-flex justify-content-end" *ngIf="!isAdmin()">
-                        <a routerLink="/cart" class="btn bg-orangered text-white">
+                        <button class="btn bg-orangered text-white" (click)="onAddToCart(food.id)">
                             <i class="material-icons">
                                 add_shopping_cart
                             </i>
                             <label id="addtocart">Add to Cart</label>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>

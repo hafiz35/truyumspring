@@ -9,6 +9,7 @@ export class AuthenticateService {
   loggedIn=false;
   isAdmin=false;
   accessToken:string;
+  authSource:string;
   redirectUrl='/';
   userAuthenticated:User;
   constructor(private userService:UserService) { }

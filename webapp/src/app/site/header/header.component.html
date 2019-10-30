@@ -10,7 +10,7 @@
       <li class="nav-item">
         <a routerLink="/menu" class="nav-link">Products</a>
       </li>
-      <li class="nav-item" *ngIf="!isAuthenticated()">
+      <li class="nav-item" *ngIf="isAuthenticated() && !isAdmin()">
         <a routerLink="/cart" class="nav-link">Cart</a>
       <li class="nav-item" *ngIf="!isAuthenticated()">
         <a routerLink="/login" class="nav-link">Login</a>

@@ -10,11 +10,12 @@ import { AuthenticateService } from '../authenticate.service';
 })
 export class LoginComponent implements OnInit {
   isLoginValid=true;
-  authSource:string;
+  authSource:string='customer';
   constructor(private router:Router,private route:ActivatedRoute,private authService:AuthenticateService) {
    }
 
   ngOnInit() {
+    this.authSource=this.authService.authSource;
   }
 
   onSubmit(form: NgForm){
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
       if(username=='john'){
         this.isLoginValid=false;
       }else{
+        this.authSource='customer';
         this.authService.authenticate(username,password);
         this.router.navigate([this.authService.redirectUrl]);
       }

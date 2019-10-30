@@ -69,7 +69,7 @@
                 *ngIf="signupForm.get('cpswd').hasError('required') && signupForm.get('cpswd').touched && signupForm.get('pswd').touched">Confirm Password
                 required</span>
               <span class="validation-error"
-                *ngIf="signupForm.get('cpswd').touched && signupForm.get('cpswd').hasError('nomatch')">Confirm Password
+                *ngIf="signupForm.get('cpswd').hasError('nomatch')">Confirm Password
                 not matched with password</span>
             </div>
             <div class="form-group col-3">
