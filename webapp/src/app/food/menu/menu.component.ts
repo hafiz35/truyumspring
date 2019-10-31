@@ -24,7 +24,7 @@ export class MenuComponent implements OnInit {
     });
     this.foodService.filter.subscribe((obj: { title: string }) => {
       if (obj.title !== '') {
-        const result = this.foods.filter(filterfood => filterfood.name.toLowerCase().includes(obj.title.toLowerCase()));
+        const result = this.tempfoods.filter(filterfood => filterfood.name.toLowerCase().includes(obj.title.toLowerCase()));
         this.foods = result ? result : [];
       } else {
         this.foods = [...this.tempfoods];
