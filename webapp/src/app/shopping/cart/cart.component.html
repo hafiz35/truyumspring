@@ -9,11 +9,16 @@
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let item of cart.items">
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-4">
             <label class="item">{{item.food.name}}</label>
           </div>
-          <div class="col-lg-6">
-            <label class="float-right item">{{item.food.price}}</label>
+          <div class="col-lg-4">
+            <button (click)="onDecrease(item.food.id)" >-</button>
+            <input type="text" readonly [(ngModel)]="item.quantity" class="width-30">
+            <button (click)="onIncrease(item.food.id)">+</button>
+          </div>
+          <div class="col-lg-4">
+            <label class="float-right item">{{item.food.price*item.quantity | currency:'INR'}}</label>
           </div>
         </div>
         <label class="float-right">
@@ -34,9 +39,9 @@
       </li>
     </ul>
   </ng-template>
-</div>
-<div class="row justify-content-center">
-  <div class="col-12 col-md-12 col-lg-6">
-    <a href="#" class="btn btn-primary" routerLink="/menu">Continue with shopping</a>
+  <div class="row justify-content-start mt-3">
+    <div class="col-12 col-md-12 col-lg-6">
+      <a href="#" class="btn bg-orangered text-white" routerLink="/menu">Continue with shopping</a>
+    </div>
   </div>
 </div>

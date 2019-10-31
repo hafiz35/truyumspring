@@ -18,4 +18,10 @@ export class CartComponent implements OnInit {
   onRemove(itemId:string){
     this.cartService.removeFromCart(itemId);
   }
+  onDecrease(itemId:string){
+    this.cartService.removeQuantity(+itemId);
+  }
+  onIncrease(itemId:string){
+    this.cartService.addToCart(+itemId,1);
+  }
 }

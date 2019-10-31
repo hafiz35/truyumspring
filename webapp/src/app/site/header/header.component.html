@@ -21,7 +21,7 @@
       <li class="nav-item" *ngIf="isAuthenticated()"><a routerLink="/menu" class="nav-link"><i class="material-icons">
             person
           </i>{{getUser().lastName}},{{getUser().firstName}}</a></li>
-      <li class="nav-item" *ngIf="isAuthenticated()"><a href="#" class="nav-link" (click)="onSignOut()">Logout</a></li>
+      <li class="nav-item" *ngIf="isAuthenticated()"><a routerLink="/" class="nav-link" (click)="onSignOut()">Logout</a></li>
     </ul>
   </div>
 </nav>
