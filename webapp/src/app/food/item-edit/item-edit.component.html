@@ -16,7 +16,7 @@
             <label for="name">Name</label>
             <input type="text" id="name" class="form-control" formControlName="mname" (value)="mname">
             <span class="validation-error"
-              *ngIf="editmenuForm.get('mname').hasError('required') && editmenuForm.get('mname').touched">Username
+              *ngIf="editmenuForm.get('mname').hasError('required') && editmenuForm.get('mname').touched">Menu Item Name
               required</span> 
           </div>
           <div class="form group col-xs-6 col-lg-3 mt-3">
