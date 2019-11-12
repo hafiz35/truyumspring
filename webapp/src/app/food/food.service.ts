@@ -7,7 +7,7 @@ import { Food } from './food.model';
   providedIn: 'root'
 })
 export class FoodService {
-  configUrl:string="assets/data.json";
+  configUrl:string="http://localhost:8083/menu-items";
   filter = new Subject();
   constructor(private httpClient:HttpClient) { }
   

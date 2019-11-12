@@ -12,9 +12,9 @@ export class UserService {
   authenticate(username:string,password:string):Observable<User>{
     return Observable.create((observer:Observer<any>)=>{
       if(username!=='admin'){
-        observer.next({username,firstName:'John',lastName:'Doe',role:'Customer',});
+        observer.next({username,firstName:'John',lastName:'Doe',role:'Customer',accessToken:''});
       }else{
-        observer.next({username,firstName:'Admin',lastName:'User',role:'Admin'});
+        observer.next({username,firstName:'Admin',lastName:'User',role:'Admin',accessToken:''});
       }
       return null;
     })
