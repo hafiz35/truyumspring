@@ -1,22 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 import { User } from './user.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  credentials: string;
+  accessToken: string = '';
+  constructor(private httpClient: HttpClient) { }
 
-  constructor() { }
-
-  authenticate(username:string,password:string):Observable<User>{
-    return Observable.create((observer:Observer<any>)=>{
-      if(username!=='admin'){
-        observer.next({username,firstName:'John',lastName:'Doe',role:'Customer',accessToken:''});
-      }else{
-        observer.next({username,firstName:'Admin',lastName:'User',role:'Admin',accessToken:''});
-      }
-      return null;
-    })
+  authenticate(user:User):Observable<any> {
+    //console.log(user);
+    return this.httpClient.post<any>("http://localhost:8083/users",user);
   }
 }

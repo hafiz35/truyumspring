@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { User } from './user.model';
 import { UserService } from './user.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,23 +10,18 @@ import { HttpClient } from '@angular/common/http';
 export class AuthenticateService {
   loggedIn=false;
   isAdmin=false;
-  accessToken:string;
   authSource:string;
   redirectUrl='/';
   userAuthenticated:User;
+  accessToken: string;
+  role:string;
   constructor(private userService:UserService,private http:HttpClient) { }
 
-  authenticate(username:string,password:string){
-    this.http.get("http://localhost:8083/authenticate").subscribe(data=>{
-      this.accessToken=data['token'];
-    })
-    this.userService.authenticate(username,password).subscribe((user:User)=>{
-      if(user){
-        this.loggedIn=true;
-        this.userAuthenticated=user;
-        this.isAdmin=user.role==='Admin';
-      }
-    });
+  authenticate(username:string,password:string):Observable<any>{
+    let credentials = btoa(username + ':' + password);
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', 'Basic ' + credentials);
+    return this.http.get("http://localhost:8083/authenticate", { headers })
   }
   logOut(){
     this.redirectUrl='/';

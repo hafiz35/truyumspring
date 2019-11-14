@@ -58,7 +58,7 @@ public class CartDaoCollectionImpl implements CartDao {
 			else {
 				double total=0.0d;
 				for(MenuItem menuItem:cartList) {
-					total+=menuItem.getPrice();
+					total+=(menuItem.getPrice()*menuItem.getQuantity());
 				}
 				cart.setTotal(total);
 				return cart;
@@ -76,6 +76,19 @@ public class CartDaoCollectionImpl implements CartDao {
 		for(MenuItem menuItem:cartList) {
 			if(menuItem.getId()==menuItemId) {
 				menuItem.setQuantity(menuItem.getQuantity()-1);
+				if(menuItem.getQuantity()==0)
+					cartList.remove(menuItem);
+				break;
+			}
+		}
+	}
+	@Override
+	public void removeCartItemAll(String user, long menuItemId) {
+		List<MenuItem> cartList=userCarts.get(user).getMenuItemList();
+		for(MenuItem menuItem:cartList) {
+			if(menuItem.getId()==menuItemId) {
+				System.out.println("Delete All");
+				menuItem.setQuantity(0);
 				if(menuItem.getQuantity()==0)
 					cartList.remove(menuItem);
 				break;

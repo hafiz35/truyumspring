@@ -2,9 +2,10 @@ export interface Food{
     id:number;
     name:string;
     price:number;
-    imgsrc:string;
+    imgSrc?:string;
     active:boolean;
     dateOfExpiry:Date;
     category:string;
     freeDelivery:boolean;
+    quantity?:number;
 }

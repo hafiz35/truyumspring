@@ -33,7 +33,7 @@ export class MenuComponent implements OnInit {
   }
 
   addFoodToCart(foodId:number){
-    this.cartService.addToCart(foodId,1);
+    this.cartService.addToCart(foodId,this.authService.userAuthenticated.username).subscribe();
   }
 
 

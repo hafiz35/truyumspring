@@ -27,5 +27,10 @@ public class CartServiceImpl implements CartService {
 	public void removeCartItem(String user, long menuItemId) {
 		dao.removeCartItem(user, menuItemId);
 	}
+	
+	@Override
+	public void removeCartItemAll(String user, long menuItemId) {
+		dao.removeCartItemAll(user, menuItemId);
+	}
 
 }

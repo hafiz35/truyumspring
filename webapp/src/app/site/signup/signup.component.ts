@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { User } from '../user.model';
+import { UserService } from '../user.service';
+import { AuthenticateService } from '../authenticate.service';
 
 @Component({
   selector: 'app-signup',
@@ -9,29 +12,19 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class SignupComponent implements OnInit {
   signupForm:FormGroup;
   formSubmitted:boolean=false;
-  constructor() { }
+  user:User;
+  userAlreadyExists:boolean=false;
+  constructor(private userService:UserService,private authService:AuthenticateService) { }
 
   ngOnInit() {
+    
     this.signupForm=new FormGroup({
-      'uname': new FormControl(null, [Validators.required,Validators.maxLength(25)], this.userExists),
+      'uname': new FormControl(null, [Validators.required,Validators.maxLength(25)],),
       'fname': new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(45)]),
       'lname': new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(45)]),
       'pswd':new FormControl(null,Validators.required),
       'cpswd':new FormControl(null,[Validators.required,this.confirmPassword.bind(this)])
     });
-  }
-
-  userExists(formControl : FormControl):Promise<any>{
-    const promise = new Promise((resolve,reject)=>{
-      setTimeout(()=>{
-        if(formControl.value==='john123'){
-            resolve({'userExist':true});
-        }else{
-          resolve(null);
-        }
-      },250);
-    });
-    return promise;
   }
 
   confirmPassword(formControl:FormControl){
@@ -45,8 +38,22 @@ export class SignupComponent implements OnInit {
 
   onSignUp(){
     this.formSubmitted=true;
-    this.signupForm.reset();
+    let username=this.signupForm.get('uname').value;
+    let firstname=this.signupForm.get('fname').value;
+    let lastname=this.signupForm.get('lname').value;
+    let password=this.signupForm.get('pswd').value;
+    this.user = {username:username,firstname:firstname,lastname:lastname,password:password};
+    this.userAlreadyExists=false;
+    this.userService.authenticate(this.user).subscribe((data)=>{
+        console.log(data);
+      },
+      (error)=>{
+        if(error['error']['message']==='User Already Exist'){
+          this.userAlreadyExists=true;
+        }        
+      }
+      );
+      this.signupForm.reset();
   }
-
 
 }

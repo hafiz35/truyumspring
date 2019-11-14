@@ -42,4 +42,11 @@ public class CartController {
 		
 	}
 	
+	@DeleteMapping("/all/{user}/{menuItemId}")
+	public void removeCartItemAll(@PathVariable String user,@PathVariable long menuItemId) {
+		LOGGER.debug("Inside removeCartItemAll");
+		cartService.removeCartItemAll(user, menuItemId);
+		
+	}
+	
 }

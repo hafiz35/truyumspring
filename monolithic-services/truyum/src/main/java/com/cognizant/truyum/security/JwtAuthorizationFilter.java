@@ -25,46 +25,47 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 	public JwtAuthorizationFilter(AuthenticationManager authenticationManager) {
 		super(authenticationManager);
 		TruyumConstants.LOGGER.info("Start");
-		TruyumConstants.LOGGER.debug("{}: ",authenticationManager);
+		TruyumConstants.LOGGER.debug("{}: ", authenticationManager);
 	}
-	
+
 	@Override
-	protected void doFilterInternal(HttpServletRequest req,HttpServletResponse res,FilterChain chain) 
+	protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
 		TruyumConstants.LOGGER.info("Start");
-		String header=req.getHeader("Authorization");
+		String header = req.getHeader("Authorization");
 		TruyumConstants.LOGGER.debug(header);
-		
-		if(header==null || !header.startsWith("Bearer ")) {
+
+		if (header == null || !header.startsWith("Bearer ")) {
 			TruyumConstants.LOGGER.info("Inside if");
 			chain.doFilter(req, res);
-			return ;
+			return;
 		}
-		UsernamePasswordAuthenticationToken authentication=getAuthentication(req);
-		
+		UsernamePasswordAuthenticationToken authentication = getAuthentication(req);
+
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		chain.doFilter(req, res);
 		TruyumConstants.LOGGER.info("End");
 	}
-	
+
 	private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
 		String token = request.getHeader("Authorization");
-		if(token!=null) {
+		if (token != null) {
 			Jws<Claims> jws;
 			try {
-				jws=Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token.replace("Bearer ",""));
-				String user=jws.getBody().getSubject();
-				TruyumConstants.LOGGER.debug(""+jws);
-				TruyumConstants.LOGGER.debug(""+jws.getBody());
-				TruyumConstants.LOGGER.debug(""+jws.getBody().getSubject());
+				jws = Jwts.parser().setSigningKey("secretKey").parseClaimsJws(token.replace("Bearer ", ""));
+				String user = jws.getBody().getSubject();
+				TruyumConstants.LOGGER.debug("" + jws);
+				TruyumConstants.LOGGER.debug("" + jws.getBody());
+				TruyumConstants.LOGGER.debug("" + jws.getBody().getSubject());
 				TruyumConstants.LOGGER.debug(user);
-				if(user!=null) {
+
+				if (user != null) {
 					return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
 				}
-			}catch(JwtException ex) {
+
+			} catch (JwtException ex) {
 				return null;
 			}
-			return null;
 		}
 		return null;
 	}

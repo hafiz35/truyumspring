@@ -2,27 +2,27 @@
   <div class="display-4">
     Cart
   </div>
-  <div class="alert alert-secondary" *ngIf="cart.items===null || cart.items.length===0; else cartItems">
+  <div class="alert alert-secondary" *ngIf="cart.food===null || cart.food.length===0 || cartEmpty; else cartItems">
     No items in cart. Use 'Add To Cart' to add items
   </div>
   <ng-template #cartItems>
     <ul class="list-group">
-      <li class="list-group-item" *ngFor="let item of cart.items">
+      <li class="list-group-item" *ngFor="let fd of cart.food">
         <div class="row">
           <div class="col-lg-4">
-            <label class="item">{{item.food.name}}</label>
+            <label class="item">{{fd.name}}</label>
           </div>
           <div class="col-lg-4">
-            <button (click)="onDecrease(item.food.id)" >-</button>
-            <input type="text" readonly [(ngModel)]="item.quantity" class="width-30">
-            <button (click)="onIncrease(item.food.id)">+</button>
+            <button (click)="onRemove(fd.id)" >-</button>
+            <input type="text" readonly [(ngModel)]="fd.quantity" class="width-30">
+            <button (click)="onAdd(fd.id)">+</button>
           </div>
           <div class="col-lg-4">
-            <label class="float-right item">{{item.food.price*item.quantity | currency:'INR'}}</label>
+            <label class="float-right item">{{fd.price*fd.quantity | currency:'INR'}}</label>
           </div>
         </div>
         <label class="float-right">
-          <i class="material-icons" (click)="onRemove(item.itemId)">
+          <i class="material-icons" (click)="onRemoveItem(fd.id)">
             delete_forever
           </i>
         </label>

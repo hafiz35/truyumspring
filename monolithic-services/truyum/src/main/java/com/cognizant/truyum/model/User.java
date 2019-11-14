@@ -1,28 +1,20 @@
 package com.cognizant.truyum.model;
 
 public class User {
-	private int userId;
 	private String username;
-	private String firstName;
-	private String lastName;
+	private String firstname;
+	private String lastname;
 	private String password;
 
 	public User() {
 		super();
 	}
-	public User(int userId, String username, String firstName, String lastName, String password) {
+	public User(String username, String firstName, String lastName, String password) {
 		super();
-		this.userId = userId;
 		this.username = username;
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.firstname = firstName;
+		this.lastname = lastName;
 		this.password = password;
-	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
 	}
 	public String getUsername() {
 		return username;
@@ -31,16 +23,16 @@ public class User {
 		this.username = username;
 	}
 	public String getFirstName() {
-		return firstName;
+		return firstname;
 	}
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.firstname = firstName;
 	}
 	public String getLastName() {
-		return lastName;
+		return lastname;
 	}
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.lastname = lastName;
 	}
 	public String getPassword() {
 		return password;
