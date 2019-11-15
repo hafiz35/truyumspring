@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-body">
         <div class="page-title">Sign Up</div>
-        <div class="alert alert-danger" *ngIf="formSubmitted && userAlreadyExists">
+        <div class="alert alert-danger" *ngIf="userAlreadyExists && !signupForm.get('uname').hasError('required')">
           User Already Exist!!
         </div>
         <div class="alert alert-success" *ngIf="formSubmitted && !userAlreadyExists">
@@ -16,16 +16,12 @@
           <div class="row">
             <div class="form-group mt-4 col-6 mr-1">
               <label for="username">Username</label>
-              <input type="text" class="form-control" id="username" formControlName="uname"
+              <input type="text" class="form-control" id="username" formControlName="uname" (input)="userExist(username)"
                 placeholder="Enter Username">
+              <span class="validation-success" *ngIf="!userAlreadyExists && !signupForm.get('uname').hasError('required')">Username Available</span>
               <span class="validation-error"
                 *ngIf="signupForm.get('uname').hasError('required') && signupForm.get('uname').touched">Username
                 required</span>
-              <div class="alert alert-warning" *ngIf="signupForm.pending">
-                <div class="spinner-border">
-                  <span class="sr-only">Loading...</span>
-                </div>
-              </div>
               <span class="validation-error" *ngIf="signupForm.get('uname').hasError('maxlength')">Username exceeded max
                 characters</span>
               <span class="validation-error" *ngIf="signupForm.get('uname').hasError('userExist')">Username already

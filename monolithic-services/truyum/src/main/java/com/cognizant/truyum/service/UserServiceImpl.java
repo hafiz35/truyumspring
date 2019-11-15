@@ -18,4 +18,9 @@ public class UserServiceImpl implements UserService {
 		dao.signUp(user);
 	}
 
+	@Override
+	public boolean checkUserExists(String username){
+		return dao.checkUserExists(username);
+	}
+
 }

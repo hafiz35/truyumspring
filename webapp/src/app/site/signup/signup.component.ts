@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from '../user.model';
 import { UserService } from '../user.service';
 import { AuthenticateService } from '../authenticate.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -19,13 +20,23 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
     
     this.signupForm=new FormGroup({
-      'uname': new FormControl(null, [Validators.required,Validators.maxLength(25)],),
+      'uname': new FormControl(null, [Validators.required,Validators.maxLength(25)]),
       'fname': new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(45)]),
       'lname': new FormControl(null,[Validators.required,Validators.pattern('^[a-zA-Z]+$'),Validators.maxLength(45)]),
       'pswd':new FormControl(null,Validators.required),
       'cpswd':new FormControl(null,[Validators.required,this.confirmPassword.bind(this)])
     });
   }
+
+  userExist() {
+    if(this.signupForm.get('uname').value.length>0){
+    
+    
+    this.userService.doesUserExist(this.signupForm.get('uname').value).subscribe(data=>{
+      this.userAlreadyExists=data;
+    });
+  }}
+
 
   confirmPassword(formControl:FormControl){
     if(this.signupForm){

@@ -12,7 +12,11 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   authenticate(user:User):Observable<any> {
-    //console.log(user);
     return this.httpClient.post<any>("http://localhost:8083/users",user);
   }
+
+  doesUserExist(username:string){
+    return this.httpClient.get<boolean>(`http://localhost:8083/users/${username}`);
+  }
+
 }

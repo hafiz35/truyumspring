@@ -4,6 +4,9 @@
 .validation-error{
     color: red;
 }
+.validation-success{
+    color: green;
+}
 .page-title{
     font-size: 30px;
     font-weight: bold;

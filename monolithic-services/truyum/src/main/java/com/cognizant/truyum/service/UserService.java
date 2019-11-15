@@ -5,4 +5,5 @@ import com.cognizant.truyum.model.User;
 
 public interface UserService {
 	public void signUp(User user) throws UserAlreadyExistsException;
+	public boolean checkUserExists(String username);
 }
